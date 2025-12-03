@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Your Homebook - A Calm Homeowner's Guide & Maintenance Binder</title>
+    <meta name="description" content="Turn your house into a well-documented asset. 40+ pages of maintenance checklists, troubleshooting guides, and home records.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* MoosePack Brand Colors */
+            --lake-teal: #3A9C8E;
+            --campfire-coral: #E94A70;
+            --sunrise-orange: #F7941E;
+            --granite: #424242;
+            --mist: #FAF6F0;
+
+            /* Functional */
+            --card-bg: rgba(58, 156, 142, 0.08);
+            --border-color: rgba(66, 66, 66, 0.15);
+            --shadow-soft: rgba(58, 156, 142, 0.15);
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--mist);
+            color: var(--granite);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        h1, h2, h3, h4, .btn, .badge, .stat-label {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        /* Left Panel - Binder Visual */
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            background: linear-gradient(145deg, #3A9C8E 0%, #2d7a6f 50%, #246860 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle organic texture overlay */
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Gentle pulsing glow */
+        .left-panel::after {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(ellipse at 30% 40%, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+            animation: gentlePulse 10s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.02); }
+        }
+
+        /* Binder Mockup */
+        .binder-container {
+            position: relative;
+            z-index: 2;
+            width: 260px;
+            margin-bottom: 2rem;
+        }
+
+        .binder {
+            background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+            border-radius: 8px;
+            padding: 2rem 1.8rem;
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+            transition: transform 0.4s ease;
+        }
+
+        .binder:hover {
+            transform: translateY(-6px) rotateY(3deg);
+        }
+
+        /* Binder rings visual */
+        .binder::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 20%;
+            height: 60%;
+            width: 16px;
+            background: linear-gradient(90deg, #d4d4d4 0%, #e8e8e8 50%, #d4d4d4 100%);
+            border-radius: 8px 0 0 8px;
+            box-shadow: inset 2px 0 4px rgba(0,0,0,0.1);
+        }
+
+        .binder-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--lake-teal);
+        }
+
+        .binder-logo {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--lake-teal);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .binder-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--granite);
+            line-height: 1.15;
+            margin-bottom: 0.4rem;
+        }
+
+        .binder-subtitle {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .binder-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-top: 1rem;
+        }
+
+        .binder-tab {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.45rem 0.6rem;
+            background: var(--card-bg);
+            border-radius: 6px;
+            font-size: 0.72rem;
+            color: var(--granite);
+            transition: all 0.2s ease;
+        }
+
+        .binder-tab:hover {
+            background: rgba(58, 156, 142, 0.15);
+        }
+
+        .tab-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 2rem;
+            z-index: 2;
+        }
+
+        .stat {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+        }
+
+        /* Right Panel - Content & CTAs */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 3.5rem;
+            gap: 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle decorative orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .glow-orb-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -100px;
+            background: var(--lake-teal);
+        }
+
+        .glow-orb-2 {
+            width: 250px;
+            height: 250px;
+            bottom: -100px;
+            left: -100px;
+            background: var(--campfire-coral);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.45rem 1rem;
+            background: rgba(58, 156, 142, 0.1);
+            border: 1px solid rgba(58, 156, 142, 0.25);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--lake-teal);
+            width: fit-content;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            color: var(--granite);
+        }
+
+        .highlight {
+            color: var(--lake-teal);
+        }
+
+        .description {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: #5a5a5a;
+            font-weight: 400;
+            max-width: 520px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.7rem;
+            margin: 0.6rem 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.9rem;
+            color: var(--granite);
+        }
+
+        .feature-icon {
+            width: 6px;
+            height: 6px;
+            background: var(--lake-teal);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.95rem 1.8rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--campfire-coral) 0%, #d43d5f 100%);
+            color: white;
+            box-shadow: 0 6px 25px rgba(233, 74, 112, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(233, 74, 112, 0.45);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--granite);
+            border: 1.5px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--lake-teal);
+            color: var(--lake-teal);
+            background: rgba(58, 156, 142, 0.04);
+        }
+
+        .btn-tertiary {
+            background: transparent;
+            color: var(--granite);
+            padding: 0.95rem 1.2rem;
+        }
+
+        .btn-tertiary:hover {
+            color: var(--lake-teal);
+        }
+
+        .price-note {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 0.5rem;
+        }
+
+        .author-tag {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--lake-teal) 0%, var(--campfire-coral) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 15px rgba(58, 156, 142, 0.25);
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--granite);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-title {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* ============================================
+           MODAL STYLES
+           ============================================ */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(66, 66, 66, 0.7);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-panel {
+            background: white;
+            border-radius: 16px;
+            max-width: 900px;
+            max-height: 85vh;
+            width: 100%;
+            overflow: hidden;
+            transform: translateY(20px) scale(0.98);
+            transition: all 0.3s ease;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.25);
+        }
+
+        .modal-backdrop.active .modal-panel {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--mist);
+        }
+
+        .modal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--granite);
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #666;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .modal-close:hover {
+            background: var(--campfire-coral);
+            color: white;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+            max-height: calc(85vh - 80px);
+        }
+
+        /* Preview Modal - Sample Pages */
+        .sample-pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .sample-page {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sample-page:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .sample-page img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .sample-page-placeholder {
+            background: linear-gradient(135deg, var(--mist) 0%, #e8e4df 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sample-page-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .sample-page-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--granite);
+            margin-bottom: 0.5rem;
+        }
+
+        .sample-page-desc {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* TOC Modal - Table of Contents */
+        .toc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .toc-tab {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: var(--mist);
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-tab:hover {
+            background: rgba(58, 156, 142, 0.1);
+            transform: translateX(5px);
+        }
+
+        .toc-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--lake-teal);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .toc-content {
+            flex: 1;
+        }
+
+        .toc-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--granite);
+            margin-bottom: 0.25rem;
+        }
+
+        .toc-description {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .toc-pages {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--lake-teal);
+            white-space: nowrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                overflow-y: auto;
+            }
+
+            body {
+                overflow: auto;
+            }
+
+            .left-panel {
+                min-height: 60vh;
+                padding: 3rem 2rem;
+            }
+
+            .right-panel {
+                min-height: auto;
+                padding: 3rem 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .modal-panel {
+                max-height: 90vh;
+            }
+
+            .sample-pages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .binder-container {
+                width: 220px;
+            }
+
+            .stats-container {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.6rem;
+            }
+
+            .right-panel {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel - Binder Visual -->
+        <div class="left-panel">
+            <div class="binder-container">
+                <div class="binder">
+                    <div class="binder-header">
+                        <div class="binder-logo">MoosePack Home</div>
+                        <div class="binder-title">Know Your Homebook</div>
+                        <div class="binder-subtitle">A Calm Homeowner's Guide</div>
+                    </div>
+                    <div class="binder-tabs">
+                        <div class="binder-tab">
+                            <span class="tab-icon">🏠</span>
+                            <span>Welcome & Home Snapshot</span>
+                        </div>
+                        <div class="binder-tab">
+                            <span class="tab-icon">🏗️</span>
+                            <span>Exterior: Roof, Siding, Gutters</span>
+                        </div>
+                        <div class="binder-tab">
+                            <span class="tab-icon">⚙️</span>
+                            <span>Major Systems</span>
+                        </div>
+                        <div class="binder-tab">
+                            <span class="tab-icon">🛡️</span>
+                            <span>Safety & Emergency</span>
+                        </div>
+                        <div class="binder-tab">
+                            <span class="tab-icon">📋</span>
+                            <span>Maintenance Planner</span>
+                        </div>
+                        <div class="binder-tab">
+                            <span class="tab-icon">❓</span>
+                            <span>What To Do If...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat">
+                    <span class="stat-number">9</span>
+                    <span class="stat-label">Tabs</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Pages</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Peace of Mind</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Content & CTAs -->
+        <div class="right-panel">
+            <div class="glow-orb glow-orb-1"></div>
+            <div class="glow-orb glow-orb-2"></div>
+
+            <div class="badge">2025 Edition</div>
+
+            <h1>
+                Turn Your House Into a<br>
+                <span class="highlight">Well-Documented Asset</span>
+            </h1>
+
+            <p class="description">
+                Finally feel like the CEO of your home, not a guest in it. Know where things are, what they're called, and exactly who to call when something goes wrong.
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <span>Home system breakdowns</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <span>Maintenance checklists</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <span>Emergency protocols</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <span>Service provider directory</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <span>"What To Do If..." guides</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <span>Warranty & records tracker</span>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <a href="#" id="buy-btn" class="btn btn-primary">
+                    Get the Guide — $49
+                    <span>→</span>
+                </a>
+                <button class="btn btn-secondary" onclick="openModal('preview-modal')">
+                    Preview Sample Pages
+                </button>
+                <button class="btn btn-tertiary" onclick="openModal('toc-modal')">
+                    See What's Inside
+                </button>
+            </div>
+
+            <p class="price-note">Instant PDF download • Print at home or office</p>
+
+            <div class="author-tag">
+                <div class="author-avatar">🏡</div>
+                <div class="author-info">
+                    <div class="author-name">Created by Kindle Martin</div>
+                    <div class="author-title">MoosePack Home • Helping homeowners feel confident</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div class="modal-backdrop" id="preview-modal">
+        <div class="modal-panel">
+            <div class="modal-header">
+                <h2 class="modal-title">Sample Pages</h2>
+                <button class="modal-close" onclick="closeModal('preview-modal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="sample-pages-grid">
+                    <div class="sample-page">
+                        <div class="sample-page-placeholder">
+                            <div class="sample-page-icon">🏠</div>
+                            <div class="sample-page-title">Roof Details</div>
+                            <div class="sample-page-desc">Track your roof type, age, warranty info, and inspection history</div>
+                        </div>
+                    </div>
+                    <div class="sample-page">
+                        <div class="sample-page-placeholder">
+                            <div class="sample-page-icon">💧</div>
+                            <div class="sample-page-title">What To Do If: Water Spot</div>
+                            <div class="sample-page-desc">Step-by-step guide when you see a water spot on the ceiling</div>
+                        </div>
+                    </div>
+                    <div class="sample-page">
+                        <div class="sample-page-placeholder">
+                            <div class="sample-page-icon">📋</div>
+                            <div class="sample-page-title">Maintenance Checklist</div>
+                            <div class="sample-page-desc">Monthly, seasonal, and yearly tasks to keep your home healthy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOC Modal -->
+    <div class="modal-backdrop" id="toc-modal">
+        <div class="modal-panel">
+            <div class="modal-header">
+                <h2 class="modal-title">What's Inside</h2>
+                <button class="modal-close" onclick="closeModal('toc-modal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="toc-list">
+                    <div class="toc-tab">
+                        <div class="toc-number">1</div>
+                        <div class="toc-content">
+                            <div class="toc-title">Welcome & Home Snapshot</div>
+                            <div class="toc-description">Big-picture details about your home at a glance</div>
+                        </div>
+                        <div class="toc-pages">2 pages</div>
+                    </div>
+                    <div class="toc-tab">
+                        <div class="toc-number">2</div>
+                        <div class="toc-content">
+                            <div class="toc-title">Exterior: Roof, Siding, Gutters</div>
+                            <div class="toc-description">What protects you from the outside world</div>
+                        </div>
+                        <div class="toc-pages">4 pages</div>
+                    </div>
+                    <div class="toc-tab">
+                        <div class="toc-number">3</div>
+                        <div class="toc-content">
+                            <div class="toc-title">Major Systems</div>
+                            <div class="toc-description">HVAC, plumbing, electrical, water heater & more</div>
+                        </div>
+                        <div class="toc-pages">9 pages</div>
+                    </div>
+                    <div class="toc-tab">
+                        <div class="toc-number">4</div>
+                        <div class="toc-content">
+                            <div class="toc-title">Interior Finishes</div>
+                            <div class="toc-description">Flooring, paint colors, trim & ceiling details</div>
+                        </div>
+                        <div class="toc-pages">2 pages</div>
+                    </div>
+                    <div class="toc-tab">
+                        <div class="toc-number">5</div>
+                        <div class="toc-content">
+                            <div class="toc-title">Safety & Emergency</div>
+                            <div class="toc-description">Detectors, shutoffs, contacts & protocols</div>
+                        </div>
+                        <div class="toc-pages">4 pages</div>
+                    </div>
+                    <div class="toc-tab">
+                        <div class="toc-number">6</div>
+                        <div class="toc-content">
+                            <div class="toc-title">Maintenance Planner & Log</div>
+                            <div class="toc-description">Monthly, seasonal, and yearly task checklists</div>
+                        </div>
+                        <div class="toc-pages">3+ pages</div>
+                    </div>
+                    <div class="toc-tab">
+                        <div class="toc-number">7</div>
+                        <div class="toc-content">
+                            <div class="toc-title">Trades & Providers</div>
+                            <div class="toc-description">Your go-to plumbers, electricians, HVAC & more</div>
+                        </div>
+                        <div class="toc-pages">3 pages</div>
+                    </div>
+                    <div class="toc-tab">
+                        <div class="toc-number">8</div>
+                        <div class="toc-content">
+                            <div class="toc-title">What To Do If...</div>
+                            <div class="toc-description">Step-by-step guides for common home issues</div>
+                        </div>
+                        <div class="toc-pages">10+ pages</div>
+                    </div>
+                    <div class="toc-tab">
+                        <div class="toc-number">9</div>
+                        <div class="toc-content">
+                            <div class="toc-title">Home Records & Documents</div>
+                            <div class="toc-description">Purchase records, appliances, warranties</div>
+                        </div>
+                        <div class="toc-pages">3+ pages</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on backdrop click
+        document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+            backdrop.addEventListener('click', (e) => {
+                if (e.target === backdrop) {
+                    backdrop.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-backdrop.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Stripe payment link placeholder - replace with actual link
+        // TODO: Update with real Stripe payment link after running stripe_helper.py
+        document.getElementById('buy-btn').href = 'https://buy.stripe.com/PLACEHOLDER';
+    </script>
+</body>
+</html>
