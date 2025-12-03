@@ -1,0 +1,476 @@
+/*
+ * Know Your Homebook - Sample Page Styles
+ * MoosePack Brand Guidelines Applied
+ * US Letter (8.5" x 11") format for 3-ring binder
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+/* ============================================
+   CSS VARIABLES - MoosePack Brand
+   ============================================ */
+:root {
+    --lake-teal: #3A9C8E;
+    --campfire-coral: #E94A70;
+    --sunrise-orange: #F7941E;
+    --granite: #424242;
+    --mist: #FAF6F0;
+
+    /* Functional colors */
+    --text-primary: #424242;
+    --text-secondary: #666666;
+    --text-muted: #888888;
+    --border-light: #e0e0e0;
+    --border-dotted: #cccccc;
+
+    /* Backgrounds */
+    --bg-sticky: #FFF9E6;
+    --bg-tip: rgba(58, 156, 142, 0.08);
+    --bg-section: rgba(58, 156, 142, 0.03);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background: #f0f0f0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   PAGE CONTAINER
+   ============================================ */
+.workbook-page {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0.5in auto;
+    padding: 0.6in 0.75in 0.6in 1in; /* Extra left margin for 3-hole punch */
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* 3-hole punch indicators */
+.workbook-page::before {
+    content: '';
+    position: absolute;
+    left: 0.35in;
+    top: 1in;
+    width: 0.25in;
+    height: 0.25in;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+}
+
+.workbook-page::after {
+    content: '';
+    position: absolute;
+    left: 0.35in;
+    bottom: 1in;
+    width: 0.25in;
+    height: 0.25in;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+}
+
+/* Middle hole (using pseudo-element workaround) */
+.hole-punch-middle {
+    position: absolute;
+    left: 0.35in;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.25in;
+    height: 0.25in;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+}
+
+/* ============================================
+   HEADERS
+   ============================================ */
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.page-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--lake-teal);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.page-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--lake-teal);
+}
+
+/* ============================================
+   INTRO TEXT
+   ============================================ */
+.intro-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    padding: 0.75rem;
+    background: var(--bg-section);
+    border-radius: 6px;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--lake-teal);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
+    border-bottom: 2px solid var(--lake-teal);
+}
+
+/* ============================================
+   FORM FIELDS
+   ============================================ */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 1.5rem;
+}
+
+.form-grid.single-column {
+    grid-template-columns: 1fr;
+}
+
+.form-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+}
+
+.form-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    min-width: 140px;
+}
+
+.form-field {
+    flex: 1;
+    border: none;
+    border-bottom: 1px dotted var(--border-dotted);
+    min-height: 1.2rem;
+    font-size: 12px;
+}
+
+.form-field.wide {
+    min-width: 200px;
+}
+
+/* Yes/No checkbox style */
+.yes-no-field {
+    display: flex;
+    gap: 1rem;
+    font-size: 12px;
+}
+
+.yes-no-field label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.checkbox {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--border-light);
+    border-radius: 3px;
+}
+
+/* ============================================
+   STICKY NOTE CALLOUT
+   ============================================ */
+.sticky-note {
+    background: var(--bg-sticky);
+    border-left: 4px solid var(--sunrise-orange);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 6px 6px 0;
+    position: relative;
+}
+
+.sticky-note::before {
+    content: '📌';
+    position: absolute;
+    top: -8px;
+    left: -2px;
+    font-size: 16px;
+}
+
+.sticky-note-text {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.5;
+    padding-left: 0.25rem;
+}
+
+/* ============================================
+   TIP BOX
+   ============================================ */
+.tip-box {
+    background: var(--bg-tip);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.tip-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.tip-content {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.tip-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--lake-teal);
+}
+
+/* ============================================
+   BULLET LISTS
+   ============================================ */
+.bullet-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.bullet-list li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.4rem;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.bullet-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--lake-teal);
+    font-weight: bold;
+}
+
+/* ============================================
+   NUMBERED LISTS
+   ============================================ */
+.numbered-list {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: step-counter;
+}
+
+.numbered-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 13px;
+    line-height: 1.4;
+    counter-increment: step-counter;
+}
+
+.numbered-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--lake-teal);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -1px;
+}
+
+/* ============================================
+   DECISION TABLE (Who to Call)
+   ============================================ */
+.decision-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5rem 0;
+    font-size: 12px;
+}
+
+.decision-table td {
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.decision-table td:first-child {
+    color: var(--text-secondary);
+    width: 55%;
+}
+
+.decision-table td:last-child {
+    font-weight: 600;
+    color: var(--lake-teal);
+}
+
+.decision-table .arrow {
+    color: var(--text-muted);
+    padding: 0 0.5rem;
+}
+
+/* ============================================
+   CHECKLIST GRID (Maintenance)
+   ============================================ */
+.checklist-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.checklist-section {
+    padding: 0.75rem;
+    background: var(--bg-section);
+    border-radius: 8px;
+}
+
+.checklist-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--lake-teal);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--lake-teal);
+}
+
+.checklist-items {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist-items li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    font-size: 12px;
+}
+
+.checklist-box {
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--border-light);
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.page-footer {
+    position: absolute;
+    bottom: 0.5in;
+    left: 1in;
+    right: 0.75in;
+    font-size: 10px;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border-light);
+    padding-top: 0.5rem;
+}
+
+.page-footer .brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--lake-teal);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    body {
+        background: white;
+    }
+
+    .workbook-page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+    }
+}
+
+/* ============================================
+   RESPONSIVE (for modal preview)
+   ============================================ */
+@media (max-width: 900px) {
+    .workbook-page {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: 1.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checklist-grid {
+        grid-template-columns: 1fr;
+    }
+}

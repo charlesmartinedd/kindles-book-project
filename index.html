@@ -554,6 +554,44 @@
             color: #666;
         }
 
+        /* Sample page iframe preview */
+        .sample-preview-frame {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+            background: white;
+        }
+
+        .sample-preview-frame iframe {
+            width: 816px; /* 8.5in at 96dpi */
+            height: 1056px; /* 11in at 96dpi */
+            border: none;
+            transform: scale(0.3);
+            transform-origin: top left;
+            pointer-events: none;
+        }
+
+        .sample-page-label {
+            padding: 1rem;
+            background: var(--mist);
+            text-align: center;
+        }
+
+        .sample-page-label .sample-page-title {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--granite);
+            margin-bottom: 0.25rem;
+        }
+
+        .sample-page-hint {
+            font-size: 0.75rem;
+            color: var(--lake-teal);
+        }
+
         /* TOC Modal - Table of Contents */
         .toc-list {
             display: flex;
@@ -815,32 +853,38 @@
 
     <!-- Preview Modal -->
     <div class="modal-backdrop" id="preview-modal">
-        <div class="modal-panel">
+        <div class="modal-panel" style="max-width: 1100px;">
             <div class="modal-header">
                 <h2 class="modal-title">Sample Pages</h2>
                 <button class="modal-close" onclick="closeModal('preview-modal')">✕</button>
             </div>
             <div class="modal-body">
                 <div class="sample-pages-grid">
-                    <div class="sample-page">
-                        <div class="sample-page-placeholder">
-                            <div class="sample-page-icon">🏠</div>
-                            <div class="sample-page-title">Roof Details</div>
-                            <div class="sample-page-desc">Track your roof type, age, warranty info, and inspection history</div>
+                    <div class="sample-page" onclick="openSamplePage('samples/roof-details.html')">
+                        <div class="sample-preview-frame">
+                            <iframe src="samples/roof-details.html" title="Roof Details Sample"></iframe>
+                        </div>
+                        <div class="sample-page-label">
+                            <span class="sample-page-title">Roof Details</span>
+                            <span class="sample-page-hint">Click to view full page</span>
                         </div>
                     </div>
-                    <div class="sample-page">
-                        <div class="sample-page-placeholder">
-                            <div class="sample-page-icon">💧</div>
-                            <div class="sample-page-title">What To Do If: Water Spot</div>
-                            <div class="sample-page-desc">Step-by-step guide when you see a water spot on the ceiling</div>
+                    <div class="sample-page" onclick="openSamplePage('samples/water-spot.html')">
+                        <div class="sample-preview-frame">
+                            <iframe src="samples/water-spot.html" title="Water Spot Troubleshooting Sample"></iframe>
+                        </div>
+                        <div class="sample-page-label">
+                            <span class="sample-page-title">What To Do If: Water Spot</span>
+                            <span class="sample-page-hint">Click to view full page</span>
                         </div>
                     </div>
-                    <div class="sample-page">
-                        <div class="sample-page-placeholder">
-                            <div class="sample-page-icon">📋</div>
-                            <div class="sample-page-title">Maintenance Checklist</div>
-                            <div class="sample-page-desc">Monthly, seasonal, and yearly tasks to keep your home healthy</div>
+                    <div class="sample-page" onclick="openSamplePage('samples/maintenance.html')">
+                        <div class="sample-preview-frame">
+                            <iframe src="samples/maintenance.html" title="Maintenance Checklist Sample"></iframe>
+                        </div>
+                        <div class="sample-page-label">
+                            <span class="sample-page-title">Maintenance Checklist</span>
+                            <span class="sample-page-hint">Click to view full page</span>
                         </div>
                     </div>
                 </div>
@@ -965,6 +1009,11 @@
                 document.body.style.overflow = '';
             }
         });
+
+        // Open sample page in new tab
+        function openSamplePage(url) {
+            window.open(url, '_blank');
+        }
 
         // Stripe payment link placeholder - replace with actual link
         // TODO: Update with real Stripe payment link after running stripe_helper.py
