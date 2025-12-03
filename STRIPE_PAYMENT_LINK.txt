@@ -1,0 +1,8 @@
+Know Your Homebook - Stripe Payment Link
+=========================================
+
+Payment URL: https://buy.stripe.com/6oUcN4bw47OyeZU9qR57W03
+Product ID: prod_TXRYUPyB3Hfgzg
+Price ID: price_1SaMfLC7k7yXUhDDIQkOvuL8
+Amount: $49.00
+Mode: LIVE

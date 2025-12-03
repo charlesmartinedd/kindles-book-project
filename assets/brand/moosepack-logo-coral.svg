@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" width="200" height="180">
+  <defs>
+    <style>
+      .logo-fill { fill: #E94A70; }
+      .logo-text { font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; fill: #E94A70; }
+    </style>
+  </defs>
+
+  <!-- Arched "MOOSE PACK" text -->
+  <path id="textArc" d="M 20,85 Q 100,20 180,85" fill="none"/>
+  <text class="logo-text" font-size="18" letter-spacing="3">
+    <textPath href="#textArc" startOffset="50%" text-anchor="middle">MOOSE PACK</textPath>
+  </text>
+
+  <!-- Three Moose Silhouettes -->
+  <g transform="translate(25, 65)">
+    <!-- Back moose (leftmost, slightly behind) -->
+    <g transform="translate(0, 5) scale(0.9)" opacity="0.7">
+      <path class="logo-fill" d="M45,45 C42,42 40,38 40,35 C40,30 43,27 47,27 L52,15 C53,13 56,13 57,15 L62,27 C66,27 69,30 69,35 C69,38 67,42 64,45 L64,55 C64,58 62,60 59,60 L50,60 C47,60 45,58 45,55 Z M47,35 C48,35 49,34 49,33 C49,32 48,31 47,31 C46,31 45,32 45,33 C45,34 46,35 47,35 Z"/>
+      <!-- Antlers -->
+      <path class="logo-fill" d="M47,15 L42,8 M47,15 L44,5 M47,15 L48,7 M62,15 L67,8 M62,15 L65,5 M62,15 L61,7" stroke="#E94A70" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Legs -->
+      <path class="logo-fill" d="M48,60 L48,75 M52,60 L52,75 M57,60 L57,75 M61,60 L61,75" stroke="#E94A70" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Middle moose (center, main) -->
+    <g transform="translate(45, 0) scale(1.0)">
+      <path class="logo-fill" d="M45,45 C42,42 40,38 40,35 C40,30 43,27 47,27 L52,15 C53,13 56,13 57,15 L62,27 C66,27 69,30 69,35 C69,38 67,42 64,45 L64,55 C64,58 62,60 59,60 L50,60 C47,60 45,58 45,55 Z M47,35 C48,35 49,34 49,33 C49,32 48,31 47,31 C46,31 45,32 45,33 C45,34 46,35 47,35 Z"/>
+      <!-- Antlers -->
+      <path class="logo-fill" d="M47,15 L42,8 M47,15 L44,5 M47,15 L48,7 M62,15 L67,8 M62,15 L65,5 M62,15 L61,7" stroke="#E94A70" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Legs -->
+      <path class="logo-fill" d="M48,60 L48,75 M52,60 L52,75 M57,60 L57,75 M61,60 L61,75" stroke="#E94A70" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Front moose (rightmost, slightly in front) -->
+    <g transform="translate(90, 5) scale(0.9)" opacity="0.85">
+      <path class="logo-fill" d="M45,45 C42,42 40,38 40,35 C40,30 43,27 47,27 L52,15 C53,13 56,13 57,15 L62,27 C66,27 69,30 69,35 C69,38 67,42 64,45 L64,55 C64,58 62,60 59,60 L50,60 C47,60 45,58 45,55 Z M47,35 C48,35 49,34 49,33 C49,32 48,31 47,31 C46,31 45,32 45,33 C45,34 46,35 47,35 Z"/>
+      <!-- Antlers -->
+      <path class="logo-fill" d="M47,15 L42,8 M47,15 L44,5 M47,15 L48,7 M62,15 L67,8 M62,15 L65,5 M62,15 L61,7" stroke="#E94A70" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Legs -->
+      <path class="logo-fill" d="M48,60 L48,75 M52,60 L52,75 M57,60 L57,75 M61,60 L61,75" stroke="#E94A70" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- "Est. 2019" with lines -->
+  <line x1="30" y1="165" x2="70" y2="165" stroke="#E94A70" stroke-width="1.5"/>
+  <text class="logo-text" x="100" y="169" font-size="12" text-anchor="middle" letter-spacing="1">Est. 2019</text>
+  <line x1="130" y1="165" x2="170" y2="165" stroke="#E94A70" stroke-width="1.5"/>
+</svg>

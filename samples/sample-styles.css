@@ -430,6 +430,7 @@ body {
     color: var(--text-muted);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-top: 1px solid var(--border-light);
     padding-top: 0.5rem;
 }
@@ -438,6 +439,19 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: var(--lake-teal);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* Inline moose icon for footer */
+.moose-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath fill='%233A9C8E' d='M15,18c-1.5-1.5-2.5-4-2.5-6c0-2.5,1.5-4,4-4l2.5-6c0.5-1,1.5-1,2,0l2.5,6c2.5,0,4,1.5,4,4c0,2-1,4.5-2.5,6v5c0,1.5-1,2.5-2.5,2.5h-5c-1.5,0-2.5-1-2.5-2.5V18z'/%3E%3Cpath fill='%233A9C8E' d='M14,8l-2.5-3.5M14,8l-1-5M21,8l2.5-3.5M21,8l1-5' stroke='%233A9C8E' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 /* ============================================

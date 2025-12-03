@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - Know Your Homebook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lake-teal: #3A9C8E;
+            --campfire-coral: #E94A70;
+            --sunrise-orange: #F7941E;
+            --granite: #424242;
+            --mist: #FAF6F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--mist);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .success-container {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--lake-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--lake-teal);
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: var(--granite);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: var(--campfire-coral);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn:hover {
+            background: #d43d62;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(233, 74, 112, 0.4);
+        }
+
+        .instructions {
+            background: var(--mist);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .instructions h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--lake-teal);
+            margin-bottom: 0.75rem;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+            color: var(--granite);
+            line-height: 1.8;
+        }
+
+        .brand {
+            margin-top: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--lake-teal);
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+        </div>
+
+        <h1>Thank You for Your Purchase!</h1>
+
+        <p class="message">
+            Your copy of <strong>Know Your Homebook</strong> is ready to download.
+            Click the button below to get your 40-page printable guide.
+        </p>
+
+        <a href="output/Know-Your-Homebook.pdf" class="download-btn" download>
+            Download Your Homebook (PDF)
+        </a>
+
+        <div class="instructions">
+            <h3>Getting Started:</h3>
+            <ol>
+                <li>Download and save the PDF to your computer</li>
+                <li>Print on US Letter paper (double-sided recommended)</li>
+                <li>Place in a 3-ring binder with tabbed dividers</li>
+                <li>Start with the Home Snapshot page - fill in what you know!</li>
+            </ol>
+        </div>
+
+        <p class="brand">MoosePack Home</p>
+    </div>
+
+    <script>
+        // Check if this is a purchase redirect
+        const params = new URLSearchParams(window.location.search);
+        if (!params.get('purchase')) {
+            // Redirect to main page if not coming from purchase
+            // window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

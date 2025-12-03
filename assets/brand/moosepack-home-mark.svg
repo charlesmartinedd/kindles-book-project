@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 30" width="120" height="30">
+  <defs>
+    <style>
+      .mark-fill { fill: #3A9C8E; }
+      .mark-text { font-family: 'Montserrat', Arial, sans-serif; font-weight: 600; fill: #3A9C8E; }
+    </style>
+  </defs>
+
+  <!-- Single Moose Icon (simplified) -->
+  <g transform="translate(2, 3) scale(0.35)">
+    <path class="mark-fill" d="M45,45 C42,42 40,38 40,35 C40,30 43,27 47,27 L52,15 C53,13 56,13 57,15 L62,27 C66,27 69,30 69,35 C69,38 67,42 64,45 L64,55 C64,58 62,60 59,60 L50,60 C47,60 45,58 45,55 Z"/>
+    <path d="M47,15 L42,8 M47,15 L44,5 M62,15 L67,8 M62,15 L65,5" stroke="#3A9C8E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M48,60 L48,72 M52,60 L52,72 M57,60 L57,72 M61,60 L61,72" stroke="#3A9C8E" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- "MoosePack Home" text -->
+  <text class="mark-text" x="38" y="20" font-size="14" letter-spacing="0.5">MoosePack Home</text>
+</svg>
